@@ -24,7 +24,7 @@
  *
  """
 import config
-from DISClib.ADT.graph import gr
+from DISClib.ADT import graph as gr
 from DISClib.ADT import map as m
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Graphs import scc
