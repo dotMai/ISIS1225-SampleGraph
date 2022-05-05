@@ -53,11 +53,11 @@ def newAnalyzer():
     """
     try:
         analyzer = {
-                    'stops': None,
-                    'connections': None,
-                    'components': None,
-                    'paths': None
-                    }
+            'stops': None,
+            'connections': None,
+            'components': None,
+            'paths': None
+        }
 
         analyzer['stops'] = m.newMap(numelements=14000,
                                      maptype='PROBING',

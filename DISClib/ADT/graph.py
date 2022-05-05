@@ -220,7 +220,7 @@ def addEdge(graph, vertexa, vertexb, weight=0):
         graph: El grafo sobre el que se ejecuta la operacion
         vertexa: Vertice de inicio
         vertexb: Vertice de destino
-        wight: peso del arco
+        weight: peso del arco
 
     Returns:
        El grafo con el nuevo arco
