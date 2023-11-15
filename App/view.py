@@ -78,37 +78,44 @@ def optionTwo(cont):
 
 
 def optionThree(cont):
+    delta_time, connected_components = controller.connectedComponents(cont)
     print('El número de componentes conectados es: ' +
-          str(controller.connectedComponents(cont)))
+          str(connected_components))
+    print('Tiempo de ejecución: ',str(delta_time))
 
 
 def optionFour(cont, initialStation):
-    controller.minimumCostPaths(cont, initialStation)
+    delta_time, minimum_cost_paths = controller.minimumCostPaths(cont, initialStation)
+    print('Tiempo de ejecución: ', delta_time)
 
 
 def optionFive(cont, destStation):
-    haspath = controller.hasPath(cont, destStation)
+    delta_time, haspath = controller.hasPath(cont, destStation)
     print('Hay camino entre la estación base : ' +
           'y la estación: ' + destStation + ': ')
     print(haspath)
+    print('Tiempo de ejecución: ', delta_time)
 
 
 def optionSix(cont, destStation):
-    path = controller.minimumCostPath(cont, destStation)
+    delta_time, path = controller.minimumCostPath(cont, destStation)
     if path is not None:
         pathlen = stack.size(path)
         print('El camino es de longitud: ' + str(pathlen))
         while (not stack.isEmpty(path)):
             stop = stack.pop(path)
             print(stop)
+        print('Tiempo de ejecución: ',delta_time)
     else:
         print('No hay camino')
+        print('Tiempo de ejecución: ',delta_time)
 
 
 def optionSeven(cont):
-    maxvert, maxdeg = controller.servedRoutes(cont)
+    delta_time, maxvert, maxdeg = controller.servedRoutes(cont)
     print('Estación: ' + maxvert + '  Total rutas servidas: '
           + str(maxdeg))
+    print('Tiempo de ejecución: ', delta_time)
 
 
 """

@@ -27,6 +27,7 @@
 import config as cf
 from App import model
 import csv
+import time
 
 """
 El controlador se encarga de mediar entre la vista y el modelo.
@@ -90,20 +91,25 @@ def totalStops(analyzer):
     Total de paradas de autobus
     """
     return model.totalStops(analyzer)
-
+     
 
 def totalConnections(analyzer):
     """
     Total de enlaces entre las paradas
     """
     return model.totalConnections(analyzer)
+     
 
 
 def connectedComponents(analyzer):
     """
     Numero de componentes fuertemente conectados
     """
-    return model.connectedComponents(analyzer)
+    start_time = getTime()
+    connected_components = model.connectedComponents(analyzer)
+    stop_time = getTime()
+    delta_time = deltaTime(stop_time, start_time)
+    return delta_time, connected_components
 
 
 def minimumCostPaths(analyzer, initialStation):
@@ -111,26 +117,57 @@ def minimumCostPaths(analyzer, initialStation):
     Calcula todos los caminos de costo minimo de initialStation a todas
     las otras estaciones del sistema
     """
-    return model.minimumCostPaths(analyzer, initialStation)
+    start_time = getTime()
+    minimum_costh_paths = model.minimumCostPaths(analyzer, initialStation)
+    stop_time = getTime()
+    delta_time = deltaTime(stop_time, start_time)
+    return delta_time, minimum_costh_paths
 
 
 def hasPath(analyzer, destStation):
     """
     Informa si existe un camino entre initialStation y destStation
     """
-    return model.hasPath(analyzer, destStation)
+    start_time = getTime()
+    has_path = model.hasPath(analyzer, destStation)
+    stop_time = getTime()
+    delta_time = deltaTime(stop_time, start_time)
+    return delta_time, has_path
 
 
 def minimumCostPath(analyzer, destStation):
     """
     Retorna el camino de costo minimo desde initialStation a destStation
     """
-    return model.minimumCostPath(analyzer, destStation)
+    start_time = getTime()
+    minimum_costh_path = model.minimumCostPath(analyzer, destStation)
+    stop_time = getTime()
+    delta_time = deltaTime(stop_time, start_time)
+    return delta_time, minimum_costh_path
 
 
 def servedRoutes(analyzer):
     """
     Retorna el camino de costo minimo desde initialStation a destStation
     """
+    start_time = getTime()
     maxvert, maxdeg = model.servedRoutes(analyzer)
-    return maxvert, maxdeg
+    stop_time = getTime()
+    delta_time = deltaTime(stop_time, start_time)
+    return delta_time, maxvert, maxdeg
+    
+
+#Funciones para la medición de tiempos
+
+def getTime():
+    """
+    devuelve el instante tiempo de procesamiento en milisegundos
+    """
+    return float(time.perf_counter()*1000)
+
+def deltaTime(end, start):
+    """
+    devuelve la diferencia entre tiempos de procesamiento muestreados
+    """
+    elapsed = float(end - start)
+    return elapsed
